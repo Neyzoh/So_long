@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adammour <adammour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adammour <skn.aga108@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 12:03:16 by adammour          #+#    #+#             */
-/*   Updated: 2025/05/30 17:41:33 by adammour         ###   ########.fr       */
+/*   Updated: 2025/05/31 15:40:17 by adammour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,9 @@ char	**load_map(char *path)
 char **parse_map(char *path)
 {
     char **map;
-    
+	char **map_tmp;
+    t_fill data;
+	
     if (!check_extension(path))
         exit_parse(NULL, "File needs to be .ber");
     map = load_map(path);
@@ -65,6 +67,11 @@ char **parse_map(char *path)
         exit_parse(map, "Invalid map : invalid element");
     if (!check_map_elem(map))
         exit_parse(map, "Invalid map : invalid number of elements");
+	map_tmp = load_map(path);
+	data = flood_fill(map_tmp);
+	free_tab(map_tmp);
+	if (!(data.collect == count_elem(map, 'C') && data.exit == 1))
+		exit_parse(map,"Invalid map : not all element are reachable");
     return (map);
 }
 

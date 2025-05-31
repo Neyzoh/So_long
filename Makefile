@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-LDFLAGS		= -Lminilibx-linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
-MLX_DIR		= ./minilibx_linux --no-print-directory
+# LDFLAGS		= -Lminilibx-linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+# MLX_DIR		= ./minilibx_linux --no-print-directory
 GNL_SRC		= $(addprefix GetNextLine/, get_next_line.c get_next_line_utils.c)
 
 NAME = so_long
@@ -23,11 +23,18 @@ all: $(NAME)
 $(LIBFT):
 	$(MAKE) -C ./libft
 
-%.o: %.c $(HEADER)
-	@$(CC) $(CFLAGS) -Iincludes -Imlx -c $< -o $@
+# %.o: %.c $(HEADER)
+# 	@$(CC) $(CFLAGS) -Iincludes -Imlx -c $< -o $@
+
+ %.o: %.c $(HEADER)
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+
+# $(NAME): $(OBJS) $(LIBFT)
+# 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(LDFLAGS) -o $(NAME) 
 
 $(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(LDFLAGS) -o $(NAME) 
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
 clean:
 	rm -f $(OBJS)
