@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adammour <skn.aga108@gmail.com>            +#+  +:+       +#+        */
+/*   By: adammour <adammour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 12:03:16 by adammour          #+#    #+#             */
-/*   Updated: 2025/05/31 15:40:17 by adammour         ###   ########.fr       */
+/*   Updated: 2025/06/05 11:27:02 by adammour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	check_extension(char *str)
 		return (1);
 	return (0);
 }
-
 
 char	**load_map(char *path)
 {
@@ -48,30 +47,29 @@ char	**load_map(char *path)
 	return (map);
 }
 
-char **parse_map(char *path)
+char	**parse_map(char *path)
 {
-    char **map;
-	char **map_tmp;
-    t_fill data;
-	
-    if (!check_extension(path))
-        exit_parse(NULL, "File needs to be .ber");
-    map = load_map(path);
-    if (!map)
-        exit_parse(NULL, "Can not load map !");
-    if (!check_line_size(map))
-        exit_parse(map, "Invalid map : different line size");
-    if (!check_wall(map))
-        exit_parse(map, "Invalid map : not surrounded by walls");
-    if (check_map_elem(map) == 42)
-        exit_parse(map, "Invalid map : invalid element");
-    if (!check_map_elem(map))
-        exit_parse(map, "Invalid map : invalid number of elements");
+	char	**map;
+	char	**map_tmp;
+	t_fill	data;
+
+	if (!check_extension(path))
+		exit_parse(NULL, "File needs to be .ber");
+	map = load_map(path);
+	if (!map)
+		exit_parse(NULL, "Can not load map !");
+	if (!check_line_size(map))
+		exit_parse(map, "Invalid map : different line size");
+	if (!check_wall(map))
+		exit_parse(map, "Invalid map : not surrounded by walls");
+	if (check_map_elem(map) == 42)
+		exit_parse(map, "Invalid map : invalid element");
+	if (!check_map_elem(map))
+		exit_parse(map, "Invalid map : invalid number of elements");
 	map_tmp = load_map(path);
 	data = flood_fill(map_tmp);
 	free_tab(map_tmp);
 	if (!(data.collect == count_elem(map, 'C') && data.exit == 1))
-		exit_parse(map,"Invalid map : not all element are reachable");
-    return (map);
+		exit_parse(map, "Invalid map : not all element are reachable");
+	return (map);
 }
-
