@@ -6,7 +6,7 @@
 /*   By: adammour <adammour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 11:30:39 by adammour          #+#    #+#             */
-/*   Updated: 2025/06/05 14:17:41 by adammour         ###   ########.fr       */
+/*   Updated: 2025/06/07 21:40:39 by adammour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int init_mlx(t_game *game)
                                       game->window_height, "so_long");
     if (!game->window_ptr)
         return (free_tab(game->map), free(game->mlx_ptr), write(2, "Error:\nwindow creation", 23), 0);
-    mlx_loop(game->mlx_ptr);
+    // mlx_loop(game->mlx_ptr);
     return (1);
 }
 
@@ -42,16 +42,16 @@ int init_img(t_game *game)
     int img_size;
 
     img_size = IMG_SIZE;
-    
-    game->img_wall = mlx_xpm_file_to_image(game->mlx_ptr, "../img/wall.xpm", &img_size, &img_size);
-    game->img_player = mlx_xpm_file_to_image(game->mlx_ptr, "../img/player.xpm", &img_size, &img_size);
-    game->img_floor = mlx_xpm_file_to_image(game->mlx_ptr, "../img/floor.xpm", &img_size, &img_size);
-    game->img_exit = mlx_xpm_file_to_image(game->mlx_ptr, "../img/exit.xpm", &img_size, &img_size);
-    game->img_collect = mlx_xpm_file_to_image(game->mlx_ptr, "../img/coin.xpm", &img_size, &img_size);
 
-    if (!(game->img_wall && game->img_exit && game->img_floor && game->img_player && game->img_collect))
-        return (free_tab(game->map), free(game->mlx_ptr), ft_putstr_fd("Error:\nimg creation", 2), 0);
-    return(1);
+    game->img_wall = mlx_xpm_file_to_image(game->mlx_ptr, "img/wall.xpm", &img_size, &img_size);
+    game->img_player = mlx_xpm_file_to_image(game->mlx_ptr, "img/player.xpm", &img_size, &img_size);
+    game->img_floor = mlx_xpm_file_to_image(game->mlx_ptr, "img/floor.xpm", &img_size, &img_size);
+    game->img_exit = mlx_xpm_file_to_image(game->mlx_ptr, "img/exit.xpm", &img_size, &img_size);
+    game->img_collect = mlx_xpm_file_to_image(game->mlx_ptr, "img/coin.xpm", &img_size, &img_size);
+
+    if (!game->img_wall || !game->img_exit || !game->img_floor || !game->img_player || !game->img_collect)
+        return (ft_clean(game, "Error:\nimg creation\n"), 0);
+    return (1);
 }
 
 int init_game(char *path, t_game *game)
@@ -62,8 +62,5 @@ int init_game(char *path, t_game *game)
         return (0);
     if (!init_img(game))
         return (0);
-    return(1);
+    return (1);
 }
-// void mlx_xpm_to_img();
-
-// void mlx_put_img_to_window();

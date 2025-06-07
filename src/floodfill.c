@@ -5,7 +5,7 @@ t_point	player_position(char **map)
 	t_point	player_pos;
 	int		i;
 	int		j;
-
+	
 	i = 0;
 	player_pos.x = 0;
 	player_pos.y = 0;

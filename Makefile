@@ -1,5 +1,5 @@
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -g3 
 LDFLAGS		= -Lminilibx-linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 MLX_DIR		= ./minilibx_linux --no-print-directory
 GNL_SRC		= $(addprefix GetNextLine/, get_next_line.c get_next_line_utils.c)
