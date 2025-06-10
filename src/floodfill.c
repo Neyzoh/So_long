@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   floodfill.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adammour <adammour@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/10 21:52:51 by adammour          #+#    #+#             */
+/*   Updated: 2025/06/10 21:53:05 by adammour         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long.h"
 
 t_point	player_position(char **map)
@@ -5,7 +17,7 @@ t_point	player_position(char **map)
 	t_point	player_pos;
 	int		i;
 	int		j;
-	
+
 	i = 0;
 	player_pos.x = 0;
 	player_pos.y = 0;
@@ -25,6 +37,7 @@ t_point	player_position(char **map)
 	}
 	return (player_pos);
 }
+
 void	fill(char **map, t_fill *data, int y, int x)
 {
 	if (y < 0 || x < 0 || y >= data->height || x >= data->width)
@@ -45,6 +58,7 @@ void	fill(char **map, t_fill *data, int y, int x)
 	fill(map, data, y, x - 1);
 	fill(map, data, y, x + 1);
 }
+
 t_fill	flood_fill(char **map)
 {
 	t_point	begin;

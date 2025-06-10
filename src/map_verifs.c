@@ -6,12 +6,11 @@
 /*   By: adammour <adammour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 17:32:01 by adammour          #+#    #+#             */
-/*   Updated: 2025/05/30 17:40:08 by adammour         ###   ########.fr       */
+/*   Updated: 2025/06/10 21:52:21 by adammour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
 
 int	check_line_size(char **map)
 {
@@ -79,27 +78,27 @@ int	count_elem(char **map, char c)
 
 int	check_map_elem(char **map)
 {
-    int i;
-    int j;
+	int	i;
+	int	j;
 
-    i = 0;
-    while (map[i])
-    {
-        j = 0;
-        while (map[i][j])
-        {
-            if (!(map[i][j] == '0' || map[i][j] == '1' || map[i][j] == 'P'
-                || map[i][j] == 'E' || map[i][j] == 'C'))
-                return(42);
-            j++;
-        }
-        i++;
-    }
-    if (count_elem(map, 'P') != 1)
-        return (0);
-    if (count_elem(map, 'C') < 1)
-        return (0);
-    if (count_elem(map, 'E') != 1)
-        return (0);
-    return (1);
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (!(map[i][j] == '0' || map[i][j] == '1' || map[i][j] == 'P'
+					|| map[i][j] == 'E' || map[i][j] == 'C'))
+				return (42);
+			j++;
+		}
+		i++;
+	}
+	if (count_elem(map, 'P') != 1)
+		return (0);
+	if (count_elem(map, 'C') < 1)
+		return (0);
+	if (count_elem(map, 'E') != 1)
+		return (0);
+	return (1);
 }

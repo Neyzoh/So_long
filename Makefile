@@ -7,7 +7,7 @@ GNL_SRC		= $(addprefix GetNextLine/, get_next_line.c get_next_line_utils.c)
 NAME = so_long
 HEADER		= so_long.h 
 
-MANDATORY = $(addprefix src/, parsing.c main.c map_verifs.c parsing_utils.c floodfill.c mlx_utils.c render.c moves.c)
+MANDATORY = $(addprefix src/, parsing.c main.c map_verifs.c parsing_utils.c floodfill.c mlx_utils.c render.c moves.c clean.c)
 LIBFT	= libft/libft.a
 GNL = GetNextLine/get_next_line.h
 SRCS = $(MANDATORY)
