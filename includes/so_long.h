@@ -6,16 +6,19 @@
 /*   By: adammour <adammour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 22:09:57 by adammour          #+#    #+#             */
-/*   Updated: 2025/06/10 22:10:44 by adammour         ###   ########.fr       */
+/*   Updated: 2025/06/11 23:37:28 by adammour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# define IMG_SIZE 40
+# define IMG_SIZE 50
+# define MAX_LINES 25
+# define MAX_LINE_SIZE 39
 
 # include "../GetNextLine/get_next_line.h"
+# include "../Printf/ft_printf.h"
 # include "../libft/libft.h"
 # include "../minilibx-linux/mlx.h"
 # include <X11/X.h>
@@ -40,6 +43,8 @@ typedef struct s_game
 	void	*img_collect;
 	void	*img_exit;
 	void	*img_floor;
+	//int  screen_width;
+	//int  screen_height;
 
 }			t_game;
 
