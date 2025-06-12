@@ -6,7 +6,7 @@
 /*   By: adammour <adammour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 22:09:57 by adammour          #+#    #+#             */
-/*   Updated: 2025/06/11 23:37:28 by adammour         ###   ########.fr       */
+/*   Updated: 2025/06/12 22:13:08 by adammour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,6 @@ typedef struct s_game
 	void	*img_collect;
 	void	*img_exit;
 	void	*img_floor;
-	//int  screen_width;
-	//int  screen_height;
-
 }			t_game;
 
 typedef struct s_point
@@ -82,4 +79,6 @@ int			map_render(t_game *game);
 int			player_moove(int key, t_game *game);
 int			ft_clean(t_game *game, char *str);
 int			cross_clicked(t_game *game);
+int			check_map_dimensions(t_game *game);
+
 #endif
